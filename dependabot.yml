@@ -1,0 +1,30 @@
+# Dependabot configuration (based on Sendra)
+# https://docs.github.com/en/code-security/dependabot/dependabot-version-updates/configuration-options-for-the-dependabot.yml-file
+
+version: 2
+updates:
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "daily"
+
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "daily"
+    groups:
+      aws-sdk:
+        patterns:
+          - "@aws-sdk/*"
+      react-email:
+        patterns:
+          - "@react-email/*"
+      tiptap:
+        patterns:
+          - "@tiptap/*"
+      dev:
+        applies-to: version-updates
+        dependency-type: "development"
+        update-types:
+          - "minor"
+          - "patch"
